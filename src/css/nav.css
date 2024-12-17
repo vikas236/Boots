@@ -1,0 +1,95 @@
+nav {
+  width: 1300px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 0;
+  overflow: hidden;
+}
+
+nav.inactive {
+  display: none;
+}
+
+nav .logo {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  padding: 0;
+}
+
+nav .logo img {
+  width: 50px;
+  margin-right: 7px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+nav ul a {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+  transition: 0.5s;
+}
+
+nav ul a:hover {
+  color: #ff6b6b;
+}
+
+nav .authentication .signup {
+  height: 50px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.5s;
+  border: 1px solid rgba(0, 0, 0, 0);
+  text-decoration: none;
+}
+
+nav .authentication .signup:hover {
+  background: white;
+  color: #ff6b6b;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+nav .authentication i {
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  background: #ff6b6b;
+  padding: 7px;
+  border-radius: 50%;
+  transition: 0.5s;
+  border: 2px solid #ff6b6b;
+}
+
+nav .authentication i:hover {
+  background: white;
+  border: 1px soild #ff6b6b;
+  color: #ff6b6b;
+}
+
+nav .authentication img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+nav .authentication img {
+  border: 2px solid white;
+}

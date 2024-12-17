@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
+import "./App.css";
+import Nav from "./pages/Nav.jsx";
+import Auth from "./pages/Auth.jsx";
+import Home from "./pages/Home.jsx";
+import Profile from "./pages/Profile.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  function RouteHandler() {
+    const location = useLocation();
+
+    useEffect(() => {
+      document.addEventListener("DOMContentLoaded", navactivity());
+      // const preloading = document.querySelector(".preloading");
+      const body = document.querySelector("body");
+
+      // preloading.classList.remove("inactive");
+      body.style.overflow = "hidden";
+
+      setTimeout(() => {
+        // preloading.classList.add("inactive");
+        body.style.overflow = "scroll";
+      }, 1000);
+    }, [location]);
+
+    function navactivity() {
+      const nav = document.querySelector("nav");
+      if (window.location.pathname == "/auth") nav.classList.add("inactive");
+      else nav.classList.remove("inactive");
+    }
+
+    return;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Nav />
+      <RouteHandler />
+      <Routes>
+        <Route exact path="/" Component={Home} />
+        <Route exact path="/home" Component={Home} />
+        <Route exact path="/auth" Component={Auth} />
+        <Route exact path="/profile" Component={Profile} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
