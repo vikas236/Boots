@@ -1,0 +1,33 @@
+.cart {
+  width: 1200px;
+  padding-top: 50px;
+  display: flex;
+  gap: 35px;
+}
+
+.cart .cart_item {
+  width: 30%;
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 32px;
+  background-color: white;
+}
+
+.cart img {
+  height: 80%;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.cart_item > div {
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart_item input {
+  width: 50px;
+  text-align: center;
+}

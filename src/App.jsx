@@ -10,6 +10,8 @@ import Nav from "./pages/Nav.jsx";
 import Auth from "./pages/Auth.jsx";
 import Home from "./pages/Home.jsx";
 import Profile from "./pages/Profile.jsx";
+import essentials from "./pages/essentials.jsx";
+import Cart from "./pages/cart.jsx";
 
 function App() {
   function RouteHandler() {
@@ -31,9 +33,15 @@ function App() {
 
     function navactivity() {
       const nav = document.querySelector("nav");
-      if (window.location.pathname == "/auth") nav.classList.add("inactive");
+      if (
+        window.location.pathname == "/auth" ||
+        window.location.pathname == "/cart"
+      )
+        nav.classList.add("inactive");
       else nav.classList.remove("inactive");
     }
+
+    essentials.checkUserActivity();
 
     return;
   }
@@ -47,6 +55,7 @@ function App() {
         <Route exact path="/home" Component={Home} />
         <Route exact path="/auth" Component={Auth} />
         <Route exact path="/profile" Component={Profile} />
+        <Route exact path="/cart" Component={Cart} />
       </Routes>
     </Router>
   );

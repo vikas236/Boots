@@ -36,14 +36,66 @@ const essentials = (() => {
     }, 500);
     setTimeout(() => {
       message.classList.remove("active");
-    }, 2500);
+    }, 5500);
     setTimeout(() => {
       message.remove();
-    }, 3000);
+    }, 6000);
   }
-  notificaiton("hi");
 
-  return { convertImageToBase64, notificaiton };
+  function checkUserActivity() {
+    const isloggedin = localStorage.getItem("boots_loggedin");
+
+    setTimeout(() => {
+      const auth = document.querySelector(".authentication");
+      let profile_image = localStorage.getItem("boots_profile_image");
+
+      if (!profile_image) profile_image = "/src/assets/sunflower.jpg";
+
+      if (isloggedin === "true") {
+        auth.innerHTML = `<a href="/profile"><img src="${profile_image}" alt="" /></a><a>logout</a>`;
+        auth.childNodes[1].className = "logout";
+        auth.childNodes[1].addEventListener("click", logout);
+      } else if (isloggedin === "false") {
+        auth.innerHTML = `<a href="/auth">signup</a>`;
+        auth.childNodes[0].className = "signup";
+      }
+    }, 50);
+  }
+
+  function logout() {
+    localStorage.setItem("boots_loggedin", false);
+    checkUserActivity();
+    notificaiton("logged out");
+  }
+
+  function updateCartSize(n) {
+    if (n > 0) {
+      const cart_size = document.querySelector(".cart_size");
+      cart_size.innerHTML = n;
+      cart_size.classList.add("active");
+    } else {
+      cart_size.classList.remove("active");
+    }
+  }
+
+  function shallowCompare(obj1, obj2) {
+    // Check if all values match
+    for (let key in obj1) {
+      if (obj1[key] !== obj2[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  return {
+    convertImageToBase64,
+    notificaiton,
+    checkUserActivity,
+    shallowCompare,
+    updateCartSize,
+  };
 })();
 
 export default essentials;

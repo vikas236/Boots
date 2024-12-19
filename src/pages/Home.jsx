@@ -1,4 +1,5 @@
 import "../css/home.css";
+import essentials from "./essentials";
 
 function Home() {
   function DesignLoop() {
@@ -26,6 +27,28 @@ function Home() {
         </div>
       </div>
     );
+  }
+
+  function addToCart(e) {
+    const price = e.target.parentElement.childNodes[0].childNodes[1].innerHTML;
+    const image = e.target.parentElement.parentElement.childNodes[0].src;
+    const cart = JSON.parse(localStorage.getItem("boots_cart")) || [];
+    let equalproductno = 0;
+    let product_quantity = 1;
+
+    cart.forEach((e, i) => {
+      if (essentials.shallowCompare({ price, image }, e)) {
+        equalproductno = i + 1;
+        product_quantity = e.product_quantity + 1;
+      }
+    });
+
+    if (equalproductno)
+      cart[equalproductno - 1] = { price, image, product_quantity };
+    else cart.push({ price, image, product_quantity });
+
+    localStorage.setItem("boots_cart", JSON.stringify(cart));
+    essentials.updateCartSize(cart.length);
   }
 
   return (
@@ -70,22 +93,28 @@ function Home() {
           <div className="product">
             <img src="/src/assets/shoe0.jpg" alt="" />
             <div className="details">
-              <span className="price">Price: ₹5</span>
-              <button>Add to Cart</button>
+              <span className="price">
+                Price: <span className="price_no"> ₹5</span>
+              </span>
+              <button onClick={addToCart}>Add to Cart</button>
             </div>
           </div>
           <div className="product">
             <img src="/src/assets/shoe1.webp" alt="" />{" "}
             <div className="details">
-              <span className="price">Price: ₹2</span>
-              <button>Add to Cart</button>
+              <span className="price">
+                Price: <span className="price_no"> ₹2</span>
+              </span>
+              <button onClick={addToCart}>Add to Cart</button>
             </div>
           </div>
           <div className="product">
             <img src="/src/assets/shoe2.webp" alt="" />{" "}
             <div className="details">
-              <span className="price">Price: ₹10</span>
-              <button>Add to Cart</button>
+              <span className="price">
+                Price: <span className="price_no"> ₹10</span>
+              </span>
+              <button onClick={addToCart}>Add to Cart</button>
             </div>
           </div>
         </div>

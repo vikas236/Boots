@@ -1,6 +1,7 @@
 import "../css/auth.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import essentials from "./essentials";
 
 function Auth() {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -37,6 +38,9 @@ function Auth() {
     ) {
       localStorage.setItem("boots_loggedin", true);
       navigate("/home");
+      essentials.notificaiton("login successfull");
+    } else {
+      essentials.notificaiton("incorrect credentials");
     }
   };
 

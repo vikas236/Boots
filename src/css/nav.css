@@ -44,7 +44,58 @@ nav ul a:hover {
   color: #ff6b6b;
 }
 
-nav .authentication .signup {
+nav .right {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+nav .cart_icon {
+  position: relative;
+}
+
+nav .right > a > i {
+  font-size: 24px;
+  color: #ff6b6b;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+nav .right > a > i:hover {
+  border: 2px solid #ff6b6b;
+}
+
+nav .cart_size {
+  width: 25px;
+  height: 23px;
+  font-size: 14px;
+  padding: 0;
+  position: absolute;
+  inset: -5px;
+  background: #ff6b6b;
+  color: white;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+nav .cart_size.active {
+  display: flex;
+}
+
+nav .authentication {
+  display: flex;
+  gap: 13px;
+}
+
+nav .authentication .signup,
+nav .authentication .logout {
   height: 50px;
   font-size: 14px;
   border-radius: 10px;
@@ -58,7 +109,8 @@ nav .authentication .signup {
   text-decoration: none;
 }
 
-nav .authentication .signup:hover {
+nav .authentication .signup:hover,
+nav .authentication .logout:hover {
   background: white;
   color: #ff6b6b;
   border: 1px solid rgba(0, 0, 0, 0.1);

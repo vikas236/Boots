@@ -259,17 +259,7 @@
   font-weight: 600;
   display: inline-block;
   position: relative;
-  margin-top: 7px;
-}
-
-.shop .details span::after {
-  content: "";
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  position: absolute;
-  top: -3px;
-  border: 2px solid white;
+  margin-top: 4px;
 }
 
 .shop .details button {
