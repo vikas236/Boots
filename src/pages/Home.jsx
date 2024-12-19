@@ -1,5 +1,9 @@
 import "../css/home.css";
 import essentials from "./essentials";
+import hero_img from "../assets/famous_boots.png";
+import shoe0 from "/src/assets/shoe0.jpg";
+import shoe1 from "/src/assets/shoe1.webp";
+import shoe2 from "/src/assets/shoe2.webp";
 
 function Home() {
   function DesignLoop() {
@@ -48,14 +52,14 @@ function Home() {
     else cart.push({ price, image, product_quantity });
 
     localStorage.setItem("boots_cart", JSON.stringify(cart));
-    essentials.updateCartSize(cart.length);
+    essentials.updateCartSize(cart);
   }
 
   return (
     <div className="home">
       <div className="hero">
         <div className="left">
-          <img src="/src/assets/famous_boots.png" alt="" />
+          <img src={hero_img} alt="" />
           <h2>Kickstart Your Style!</h2>
           <span>Step into a world of charm and playfulness!</span>
           <div className="social_media">
@@ -91,7 +95,7 @@ function Home() {
         </p>
         <div className="products">
           <div className="product">
-            <img src="/src/assets/shoe0.jpg" alt="" />
+            <img src={shoe0} alt="" />
             <div className="details">
               <span className="price">
                 Price: <span className="price_no"> ₹5</span>
@@ -100,7 +104,7 @@ function Home() {
             </div>
           </div>
           <div className="product">
-            <img src="/src/assets/shoe1.webp" alt="" />{" "}
+            <img src={shoe1} alt="" />{" "}
             <div className="details">
               <span className="price">
                 Price: <span className="price_no"> ₹2</span>
@@ -109,7 +113,7 @@ function Home() {
             </div>
           </div>
           <div className="product">
-            <img src="/src/assets/shoe2.webp" alt="" />{" "}
+            <img src={shoe2} alt="" />{" "}
             <div className="details">
               <span className="price">
                 Price: <span className="price_no"> ₹10</span>

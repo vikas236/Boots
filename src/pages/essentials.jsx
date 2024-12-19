@@ -68,14 +68,17 @@ const essentials = (() => {
     notificaiton("logged out");
   }
 
-  function updateCartSize(n) {
-    if (n > 0) {
+  function updateCartSize(arr) {
+    let n = JSON.parse(arr).length;
+    setTimeout(() => {
       const cart_size = document.querySelector(".cart_size");
-      cart_size.innerHTML = n;
-      cart_size.classList.add("active");
-    } else {
-      cart_size.classList.remove("active");
-    }
+      if (n > 0) {
+        cart_size.innerHTML = n;
+        cart_size.classList.add("active");
+      } else {
+        cart_size.classList.remove("active");
+      }
+    }, 250);
   }
 
   function shallowCompare(obj1, obj2) {

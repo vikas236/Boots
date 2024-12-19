@@ -4,9 +4,11 @@ import essentials from "./essentials";
 function Nav() {
   document.addEventListener("DOMContentLoaded", () => {
     essentials.checkUserActivity();
-    essentials.updateCartSize(
-      JSON.parse(localStorage.getItem("boots_cart")).length
-    );
+    let arr = localStorage.getItem("boots_cart");
+
+    if (arr) {
+      essentials.updateCartSize(arr);
+    }
   });
 
   return (
